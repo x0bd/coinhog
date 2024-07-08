@@ -1,19 +1,22 @@
 // Make NavBar with fancy framer motion animations
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
 import { ThemeToggle } from "./ThemeToggle";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Menu } from "lucide-react";
 
 const NavBar = () => {
 	return (
 		<>
 			<DesktopNavbar />
+			<MobileNavBar />
 		</>
 	);
 };
@@ -40,6 +43,47 @@ const DesktopNavbar = () => {
 						))}
 					</div>
 				</div>
+				<div className="flex items-center gap-2">
+					<ThemeToggle />
+					<UserButton afterSignOutUrl="/sign-in" />
+				</div>
+			</nav>
+		</div>
+	);
+};
+
+const MobileNavBar = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	return (
+		<div className="block border-separate bg-background md:hidden">
+			<nav className="container flex items-center justify-between px-8">
+				<div className="flex h-[80px] min-h-[60px] items-center gap-x-4">
+					<Logo />
+				</div>
+				<Sheet open={isOpen} onOpenChange={setIsOpen}>
+					<SheetTrigger asChild>
+						<Button variant={"ghost"} size={"icon"}>
+							<Menu />
+						</Button>
+					</SheetTrigger>
+					<SheetContent
+						className="w-[400px] sm:w-[540px]"
+						side={"left"}
+					>
+						<Logo />
+						<div className="flex flex-col gap-1 pt-4">
+							{items.map((item) => (
+								<NavbarItem
+									key={item.label}
+									link={item.link}
+									label={item.label}
+								/>
+							))}
+						</div>
+					</SheetContent>
+				</Sheet>
+
 				<div className="flex items-center gap-2">
 					<ThemeToggle />
 					<UserButton afterSignOutUrl="/sign-in" />
