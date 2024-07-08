@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistMono } from "geist/font/mono";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
 	title: "coinhog",
@@ -13,8 +14,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={GeistMono.className}>{children}</body>
-		</html>
+		<ClerkProvider>
+			<html lang="en">
+				<body className={GeistMono.className}>{children}</body>
+			</html>
+		</ClerkProvider>
 	);
 }
