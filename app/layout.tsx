@@ -16,18 +16,19 @@ export default function RootLayout({
 }>) {
 	return (
 		<ClerkProvider>
-			<html lang="en" className={GeistMono.className}>
+			<html
+				lang="en"
+				className={GeistMono.className}
+				suppressHydrationWarning
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<body
-						className="container mx-auto max-w-[900px]"
-						suppressHydrationWarning
-					>
-						{children}
+					<body className="container mx-auto max-w-[900px]">
+						<div>{children}</div>
 					</body>
 				</ThemeProvider>
 			</html>
