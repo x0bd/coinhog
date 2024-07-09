@@ -78,6 +78,9 @@ const MobileNavBar = () => {
 									key={item.label}
 									link={item.link}
 									label={item.label}
+									clickCallback={() =>
+										setIsOpen((prev) => !prev)
+									}
 								/>
 							))}
 						</div>
@@ -93,7 +96,15 @@ const MobileNavBar = () => {
 	);
 };
 
-const NavbarItem = ({ link, label }: { link: string; label: string }) => {
+const NavbarItem = ({
+	link,
+	label,
+	clickCallback,
+}: {
+	link: string;
+	label: string;
+	clickCallback?: () => void;
+}) => {
 	const pathname = usePathname();
 	const isActive = pathname === link;
 
@@ -106,6 +117,9 @@ const NavbarItem = ({ link, label }: { link: string; label: string }) => {
 					isActive && "text-foreground"
 				)}
 				href={link}
+				onClick={() => {
+					if (clickCallback) clickCallback();
+				}}
 			>
 				{label}
 			</Link>

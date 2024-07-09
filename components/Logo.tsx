@@ -4,7 +4,7 @@ import Link from "next/link";
 const Logo = () => {
 	return (
 		<Link className="flex items-center gap-2" href={"/"}>
-			<PawPrint className="stroke h-11 w-11 stroke-amber-600 stroke-[2]" />{" "}
+			<PawPrint className="stroke h-11 w-11 stroke-zinc-800 dark:stroke-white stroke-[2]" />{" "}
 		</Link>
 	);
 };

@@ -23,7 +23,10 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<body className="container mx-auto max-w-[900px]">
+					<body
+						className="container mx-auto max-w-[900px]"
+						suppressHydrationWarning
+					>
 						{children}
 					</body>
 				</ThemeProvider>
