@@ -5,7 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/providers/ThemeProviders";
 
 export const metadata: Metadata = {
-	title: "coinneko",
+	title: "CoinNeko",
 	description: "personal finance tracker run by cats",
 };
 

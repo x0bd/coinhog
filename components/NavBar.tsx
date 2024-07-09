@@ -44,8 +44,8 @@ const DesktopNavbar = () => {
 					</div>
 				</div>
 				<div className="flex items-center gap-2">
-					<ThemeToggle />
 					<UserButton afterSignOutUrl="/sign-in" />
+					<ThemeToggle />
 				</div>
 			</nav>
 		</div>
