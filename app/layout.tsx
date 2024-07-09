@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GeistMono } from "geist/font/mono";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/providers/ThemeProviders";
+import * as React from "react";
+import RootProviders from "@/components/providers/RootProviders";
 
 export const metadata: Metadata = {
 	title: "CoinNeko",
@@ -21,16 +22,9 @@ export default function RootLayout({
 				className={GeistMono.className}
 				suppressHydrationWarning
 			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<body className="container mx-auto max-w-[900px]">
-						<div>{children}</div>
-					</body>
-				</ThemeProvider>
+				<body className="container mx-auto max-w-[900px]">
+					<RootProviders>{children}</RootProviders>
+				</body>
 			</html>
 		</ClerkProvider>
 	);
