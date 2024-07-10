@@ -23,10 +23,12 @@ export default function RootLayout({
 				className={GeistMono.className}
 				suppressHydrationWarning
 			>
-				<body className="container mx-auto max-w-[900px]">
-					<Toaster richColors position="bottom-right" />
-					<RootProviders>{children}</RootProviders>
-				</body>
+				<div>
+					<body className="container mx-auto max-w-[900px]">
+						<Toaster richColors position="bottom-right" />
+						<RootProviders>{children}</RootProviders>
+					</body>
+				</div>
 			</html>
 		</ClerkProvider>
 	);

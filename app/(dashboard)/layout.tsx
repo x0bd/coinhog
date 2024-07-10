@@ -5,7 +5,7 @@ const layout = ({ children }: { children: ReactNode }) => {
 	return (
 		<div className="relative flex h-screen w-full flex-col">
 			<NavBar />
-			{children}
+			<div>{children}</div>
 		</div>
 	);
 };
