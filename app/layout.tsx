@@ -1,35 +1,36 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { GeistMono } from "geist/font/mono";
 import { ClerkProvider } from "@clerk/nextjs";
-import * as React from "react";
 import RootProviders from "@/components/providers/RootProviders";
 import { Toaster } from "@/components/ui/sonner";
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata: Metadata = {
-	title: "CoinNeko",
-	description: "personal finance tracker run by cats",
+  title: "Budget Tracker",
+  description: "CodeWithKliton",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<ClerkProvider>
-			<html
-				lang="en"
-				className={GeistMono.className}
-				suppressHydrationWarning
-			>
-				<div>
-					<body className="container mx-auto max-w-[900px]">
-						<Toaster richColors position="bottom-right" />
-						<RootProviders>{children}</RootProviders>
-					</body>
-				</div>
-			</html>
-		</ClerkProvider>
-	);
+  return (
+    <ClerkProvider>
+      <html
+        lang="en"
+        className="dark"
+        style={{
+          colorScheme: "dark",
+        }}
+      >
+        <body className={inter.className}>
+          <Toaster richColors position="bottom-right" />
+          <RootProviders>{children}</RootProviders>
+        </body>
+      </html>
+    </ClerkProvider>
+  );
 }
