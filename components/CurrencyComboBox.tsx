@@ -18,9 +18,9 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
-import { Currencies, Currency } from "@/lib/currency";
+import { Currencies, Currency } from "@/lib/currencies";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import SkeletonWrapper from "./SkeletonWrapper";
+import SkeletonWrapper from "@/components/SkeletonWrapper";
 import { UserSettings } from "@prisma/client";
 import { UpdateUserCurrency } from "@/app/neko/_actions/userSettings";
 import { toast } from "sonner";
@@ -39,16 +39,29 @@ export function CurrencyComboBox() {
 
 	React.useEffect(() => {
 		if (!userSettings.data) return;
-
 		const userCurrency = Currencies.find(
 			(currency) => currency.value === userSettings.data.currency
 		);
-
 		if (userCurrency) setSelectedOption(userCurrency);
 	}, [userSettings.data]);
 
 	const mutation = useMutation({
 		mutationFn: UpdateUserCurrency,
+		onSuccess: (data: UserSettings) => {
+			toast.success(`Currency updated successuflly 🎉`, {
+				id: "update-currency",
+			});
+
+			setSelectedOption(
+				Currencies.find((c) => c.value === data.currency) || null
+			);
+		},
+		onError: (e) => {
+			console.error(e);
+			toast.error("Something went wrong", {
+				id: "update-currency",
+			});
+		},
 	});
 
 	const selectOption = React.useCallback(

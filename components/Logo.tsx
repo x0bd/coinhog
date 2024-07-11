@@ -1,12 +1,22 @@
 import { PawPrint } from "lucide-react";
-import Link from "next/link";
+import React from "react";
 
-const Logo = () => {
+function Logo() {
 	return (
-		<Link className="flex items-center gap-2" href={"/"}>
-			<PawPrint className="stroke h-11 w-11 stroke-zinc-800 dark:stroke-white stroke-[2]" />{" "}
-		</Link>
+		<a href="/" className="flex items-center gap-2">
+			<PawPrint className="stroke h-11 w-11" />
+		</a>
 	);
-};
+}
+
+export function LogoMobile() {
+	return (
+		<a href="/" className="flex items-center gap-2">
+			<p className="bg-clip-text text-3xl font-bold leading-tight tracking-tighter text-transparent">
+				CoinNeko
+			</p>
+		</a>
+	);
+}
 
 export default Logo;

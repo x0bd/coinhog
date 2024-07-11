@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { GeistMono } from "geist/font/mono";
 import { ClerkProvider } from "@clerk/nextjs";
-import * as React from "react";
 import RootProviders from "@/components/providers/RootProviders";
 import { Toaster } from "@/components/ui/sonner";
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
 	title: "CoinNeko",
-	description: "personal finance tracker run by cats",
+	description: "a personal finance tracker run by cats",
 };
 
 export default function RootLayout({
@@ -23,10 +22,12 @@ export default function RootLayout({
 				className={GeistMono.className}
 				suppressHydrationWarning
 			>
-				<body className="container mx-auto max-w-[900px]">
-					<Toaster richColors position="bottom-right" />
-					<RootProviders>{children}</RootProviders>
-				</body>
+				<div>
+					<body>
+						<Toaster richColors position="bottom-right" />
+						<RootProviders>{children}</RootProviders>
+					</body>
+				</div>
 			</html>
 		</ClerkProvider>
 	);
