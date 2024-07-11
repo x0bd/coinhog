@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import RootProviders from "@/components/providers/RootProviders";
 import { Toaster } from "@/components/ui/sonner";
-
-const inter = Inter({ subsets: ["latin"] });
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
 	title: "CoinNeko",
@@ -21,15 +19,15 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html
 				lang="en"
-				className="dark"
-				style={{
-					colorScheme: "dark",
-				}}
+				className={GeistMono.className}
+				suppressHydrationWarning
 			>
-				<body className={inter.className}>
-					<Toaster richColors position="bottom-right" />
-					<RootProviders>{children}</RootProviders>
-				</body>
+				<div>
+					<body className="container mx-auto max-w-[900px]">
+						<Toaster richColors position="bottom-right" />
+						<RootProviders>{children}</RootProviders>
+					</body>
+				</div>
 			</html>
 		</ClerkProvider>
 	);
