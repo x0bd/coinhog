@@ -23,7 +23,7 @@ export default function RootLayout({
 				suppressHydrationWarning
 			>
 				<div>
-					<body className="container mx-auto max-w-[900px]">
+					<body>
 						<Toaster richColors position="bottom-right" />
 						<RootProviders>{children}</RootProviders>
 					</body>
