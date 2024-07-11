@@ -1,8 +1,6 @@
 import prisma from "@/lib/prisma";
-import { currentUser } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
 import { currentUser } from "@clerk/nextjs/server";
 
 export async function GET(request: Request) {
