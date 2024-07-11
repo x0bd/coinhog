@@ -8,29 +8,29 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Budget Tracker",
-  description: "CodeWithKliton",
+	title: "CoinNeko",
+	description: "a personal finance tracker run by cats",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider>
-      <html
-        lang="en"
-        className="dark"
-        style={{
-          colorScheme: "dark",
-        }}
-      >
-        <body className={inter.className}>
-          <Toaster richColors position="bottom-right" />
-          <RootProviders>{children}</RootProviders>
-        </body>
-      </html>
-    </ClerkProvider>
-  );
+	return (
+		<ClerkProvider>
+			<html
+				lang="en"
+				className="dark"
+				style={{
+					colorScheme: "dark",
+				}}
+			>
+				<body className={inter.className}>
+					<Toaster richColors position="bottom-right" />
+					<RootProviders>{children}</RootProviders>
+				</body>
+			</html>
+		</ClerkProvider>
+	);
 }

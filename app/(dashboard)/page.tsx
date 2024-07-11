@@ -20,7 +20,7 @@ async function page() {
 	});
 
 	if (!userSettings) {
-		redirect("/wizard");
+		redirect("/neko");
 	}
 
 	return (
