@@ -1,1 +1,1 @@
-## coinhog - personal finance tracker
+## coinneko- personal finance tracker
