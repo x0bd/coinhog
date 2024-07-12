@@ -4,7 +4,7 @@ import React from "react";
 function Logo() {
 	return (
 		<a href="/" className="flex items-center gap-2">
-			<PawPrint className="stroke h-11 w-11" />
+			<PawPrint className="stroke h-8 w-8" />
 		</a>
 	);
 }
